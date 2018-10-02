@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+
+{% load utility %}
+{% load static %}
+
+{% block page_title %}
+Каталог
+{% endblock %}
+   
+{% block page_styles %}
+<link rel="stylesheet" href="{% static 'products/style.css' %}">
+{% endblock %}
+ 
+{% block page_content %}
+<div class="product__catalog"> 
+    {% for item in results %}
+
+    {% include 'products/components/product.html' with product=item %}
+
+    {% endfor %}
+</div>
+<img src="/static/img/1087164.jpg" alt="kamni">
+{% endblock %}   

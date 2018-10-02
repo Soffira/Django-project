@@ -1,0 +1,15 @@
+<div class="product">
+    <div class="product_content">
+       
+        <h2 class="product_title">
+            {{ title|default:'Context is empty'|title }} 
+        </h2>
+        
+        <span class="product_cost">
+            {{ cost }}
+        </span>
+        
+        <a class="product_link" href="{% url 'products:detail' pk=id %}"></a>
+        
+    </div>
+</div>
