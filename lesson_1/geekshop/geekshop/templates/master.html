@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <ul class="menu">
+        <li><a href="/" class="main">Главная</a></li>
+        <li><a href="/products/">Каталог</a></li>
+        <li><a href="/contact/">Контакты</a></li>
+    </ul>
+    <hr>
+    <title>
+        {% block page_title %}
+        {% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'geekshop/style.css' %}">
+    {% block page_styles %}
+    {% endblock %}
+</head>
+<body>
+    <h2>{{ user }}</h2>
+    {% block page_content %}
+    {% endblock %}
+    <hr>
+    <footer>@ «Все права защищены»</footer>
+</body>
+</html>
