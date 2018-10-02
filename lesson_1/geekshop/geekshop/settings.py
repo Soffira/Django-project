@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainapp',
     'products',
-    'main',
     'contact',
 ]
 
@@ -58,7 +57,9 @@ ROOT_URLCONF = 'geekshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'geekshop/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,10 +125,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #стили и шрифты:
 
-#<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-#<link rel="stylesheet" href="/static/fonts/font-awesome/css/font-awesome.css">
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'geekshop', 'static') #прописываем конкретный путь к файлу, иначе его прога не видит
+]
