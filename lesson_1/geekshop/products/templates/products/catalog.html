@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Каталог Природные камни Урала</title>
-</head>
-<body>
-<ul class="menu">
-        <li><a href="/" class="main">Главная</a></li>
-        <li><a href="/products/">Каталог</a></li>
-        <li><a href="/contact/">Контакты</a></li>
-    </ul>
-    <hr>
-    <h1>Каталог</h1>
-    <ul>
-        {% for itm in results %}
-            <li>{{ itm }}</li>
-        {% endfor %}
-    </ul>
-    <a href="../pictures/1087164.jpg"></a>
-    <img src="/static/img/1087164.jpg" alt="kamni">
-    <hr>
-    <footer>@ «Все права защищены»</footer>
-</body>
-</html>
+{% extends 'master.html' %}
+
+{% load utility %}
+{% load static %}
+
+{% block page_title %}
+Каталог
+{% endblock %}
+   
+{% block page_styles %}
+<link rel="stylesheet" href="{% static 'products/style.css' %}">
+{% endblock %}
+ 
+{% block page_content %}
+<div class="product__catalog"> 
+    {% for item in results %}
+
+    {% include 'products/components/product.html' with product=item %}
+
+    {% endfor %}
+</div>
+<img src="/static/img/1087164.jpg" alt="kamni">
+{% endblock %}   
