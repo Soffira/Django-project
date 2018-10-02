@@ -1,6 +1,6 @@
 from django import template
 
-register = template.Librery()
+register = template.Library()
 
 @register.simple_tag  #декоратор превращает функцию в соответствующий template tag
 def get_value_by_key(source, key):
