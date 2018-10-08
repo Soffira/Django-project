@@ -18,19 +18,24 @@ from django.urls import path, include
 import mainapp.views as mainapp
 
 from django.conf import settings
-#from django.conf.urls.static import static
+from django.conf.urls.static import static
+
 #from mainapp.views import index
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls'), name='main'),
-    path('products/', include('products.urls'), name='products'),
+    path('products/', include('products.urls.products'), name='products'),
+    path('categories/', include('products.urls.categories'), name='categories'),
     path('contact/', include('contact.urls'), name='contact'),
+    path('auth/', include('authapp.urls', namespace='auth')),
+    
     #path('mainapp/', index),
     #path('mainapp/', mainapp.main),
 ]
 
-#if settings.DEBUG:
-#    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #подхватывает все адресные изменения 
+    # в settings и актуализирует автоматически (для медиа и статик файлов)
 
