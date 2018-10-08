@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'mainapp',
     'products',
     'contact',
+    'images',
+    'authapp',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +87,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'authapp.ShopUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -127,7 +130,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/'   #в реальном проекте настройки будут производиться на прокси-сервере             
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
