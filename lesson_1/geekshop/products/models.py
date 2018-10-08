@@ -38,9 +38,10 @@ class Product(models.Model):
         on_delete=models.CASCADE
     )
 
-    image = models.ImageField(
-        blank=True,
-        null=True
+    image = models.ForeignKey(      #связываем модели
+        'images.Image',
+        on_delete=models.PROTECT
+        
     )
 
     snippet = models.TextField(
