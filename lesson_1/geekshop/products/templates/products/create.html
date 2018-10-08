@@ -1,20 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Create Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
+{% extends 'master.html' %}
 
-    <form action="">
-        <label for="title">Title</label>
-        <input name="title" type="text">
-        <input type="submit" value="Submit">
-    </form>
-    
-</body>
-</html>
+{% load static %}
+
+{% block page_title %}
+Create View
+{% endblock %}
+   
+{% block page_styles %}
+{% endblock %}
+ 
+{% block page_content %}
+
+<form method="POST" enctype="multipart/form-data">
+   {% csrf_token %}
+   
+   {% for err in form.not_field_errors %}
+       <div class="alert alert-danger" role="alert">
+           <span>{{ err }}</span>
+       </div>
+   {% endfor %}
+   
+   {% for field in form %}
+   <div class="form-group">
+       <label for="{{ field.name }}">
+           {{ field.label }}
+       </label>
+       {{ field }}
+              
+       {% for err in field.errors %}
+           <small class="form-text">{{ err }}</small>
+       {% endfor %}
+       
+   </div>
+   {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %} 
